@@ -1,12 +1,17 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import classes from "./main-header.module.css"
 import logo from "@/assets/logo.png"
+import NavLink from "@/components/main-header/nav-link";
 
 export default function MainHeader() {
+    const path = usePathname();
+
     return <header className={classes.header}>
-        <Link className={classes.logo} href="/public">
+        <Link className={classes.logo} href="/">
             <Image priority src={logo} alt="logo"/>
             NextLevel Food
         </Link>
@@ -14,11 +19,20 @@ export default function MainHeader() {
         <nav className={classes.nav}>
             <ul>
                 <li>
-                    <Link href="/meals">Browse Meals</Link>
+                    <NavLink
+                        href="/meals"
+                    >
+                        Browse Meals
+                    </NavLink>
                 </li>
 
                 <li>
-                    <Link href="/community">Foodies Community</Link>
+
+                    <NavLink
+                        href="/community"
+                    >
+                        Foodies Community
+                    </NavLink>
                 </li>
             </ul>
         </nav>
